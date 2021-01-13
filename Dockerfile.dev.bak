@@ -1,0 +1,14 @@
+#install the baseos
+From node:alpine
+#specify working directory
+WORKDIR '/app'
+#COPY packagejson files to app
+COPY package.json .
+#install dependicies
+RUN npm install
+#copy all files
+COPY . .
+#start the application
+EXPOSE 3000
+CMD [ "npm","start","run"]
+

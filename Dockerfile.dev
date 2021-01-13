@@ -1,0 +1,23 @@
+#Install an base OS that support node.js
+FROM node:alpine
+
+#Specify a working directory
+WORKDIR '/app'
+
+#OOPY package json file to app folder in container
+
+COPY package.json .
+
+#Install NPM dependencies
+
+RUN npm install
+
+#COPY entire react folders into app directory
+
+COPY . .
+
+#RUN the npm start command
+
+CMD ["npm","start","run"]
+
+

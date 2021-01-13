@@ -1,0 +1,30 @@
+#Install a base OS for nodejs platfrom
+FROM node:alpine as nodeserver
+
+#Working directory
+WORKDIR '/app'
+
+#Copy package.json files 
+
+COPY package.json .
+
+#Install NPM dependcies
+
+RUN npm install
+
+#COPY entire files
+
+COPY . .
+
+#Build the production server
+
+RUN npm run build
+
+
+#Install webserver in production server
+
+FROM nginx 
+
+#COPY files
+COPY --from=nodeserver /app/build /usr/share/nginx/html
+
