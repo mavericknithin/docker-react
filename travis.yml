@@ -1,11 +1,11 @@
 sudo : required
 services :
-- docker
+ - docker
 
 #before install
-- docker build -t firstversion -f Dockerfile.dev .
+ - docker build -t firstversion -f Dockerfile.dev .
 
 #after build
-- docker run firstversion npm run test -- --coverage
+ - docker run firstversion npm run test -- --coverage
 
 
